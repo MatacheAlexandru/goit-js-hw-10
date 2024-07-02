@@ -1,4 +1,4 @@
-import { fetchBreeds, fetchCatByBreed } from './cat-api';
+import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 import SlimSelect from 'slim-select';
 import Notiflix from 'notiflix';
 
@@ -17,6 +17,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const breeds = await fetchBreeds();
     populateBreedSelect(breeds);
     breedSelect.style.display = 'block';
+
+    // Selectează automat prima rasă din listă
+    if (breeds.length > 0) {
+      const firstBreedId = breeds[0].id;
+      breedSelect.value = firstBreedId;
+      loadCatInfo(firstBreedId);
+    }
   } catch (error) {
     Notiflix.Notify.failure(
       'Oops! Something went wrong! Try reloading the page!'
@@ -31,33 +38,40 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!breedId) return;
 
-    loader.style.display = 'block';
-    catInfo.style.display = 'none';
-    errorElement.style.display = 'none';
-
-    try {
-      const catData = await fetchCatByBreed(breedId);
-      displayCatInfo(catData);
-      catInfo.style.display = 'block';
-    } catch (error) {
-      Notiflix.Notify.failure(
-        'Oops! Something went wrong! Try reloading the page!'
-      );
-      errorElement.style.display = 'block';
-    } finally {
-      loader.style.display = 'none';
-    }
+    loadCatInfo(breedId);
   });
 });
 
+async function loadCatInfo(breedId) {
+  const loader = document.querySelector('.loader');
+  const catInfo = document.querySelector('.cat-info');
+  const errorElement = document.querySelector('.error');
+
+  loader.style.display = 'block';
+  catInfo.style.display = 'none';
+  errorElement.style.display = 'none';
+
+  try {
+    const catData = await fetchCatByBreed(breedId);
+    displayCatInfo(catData);
+    catInfo.style.display = 'block';
+  } catch (error) {
+    Notiflix.Notify.failure(
+      'Oops! Something went wrong! Try reloading the page!'
+    );
+    errorElement.style.display = 'block';
+  } finally {
+    loader.style.display = 'none';
+  }
+}
+
 function populateBreedSelect(breeds) {
   const breedSelect = document.querySelector('.breed-select');
-  breedSelect.innerHTML = breeds
+  const options = breeds
     .map(breed => `<option value="${breed.id}">${breed.name}</option>`)
     .join('');
-  new SlimSelect({
-    select: '.breed-select',
-  });
+  breedSelect.innerHTML = options;
+  new SlimSelect({ select: '.breed-select' });
 }
 
 function displayCatInfo(catData) {

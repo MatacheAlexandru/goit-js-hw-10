@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="./sass/index.css" />
   </head>
   <body>
-    <select class="breed-select"></select>
+    <h1>Cat Finder</h1>
+    <label for="breed-select">Choose a breed:</label>
+    <select id="breed-select" class="breed-select"></select>
     <p class="loader">Loading data, please wait...</p>
     <p class="error">Oops! Something went wrong! Try reloading the page!</p>
     <div class="cat-info"></div>
 
-    <script src="cat-api.js" type="module"></script>
-    <script src="index.js" type="module"></script>
+    <script src="./cat-api.js" type="module"></script>
+    <script src="./index.js" type="module"></script>
   </body>
 </html>
