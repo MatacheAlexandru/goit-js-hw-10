@@ -3,18 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homework 10</title>
+    <title>Cat Finder</title>
     <link rel="stylesheet" href="./sass/index.css" />
   </head>
   <body>
     <h1>Cat Finder</h1>
-    <label for="breed-select">Choose a breed:</label>
-    <select id="breed-select" class="breed-select"></select>
+    <label for="search-input">Search for a breed:</label>
+    <input
+      type="text"
+      id="search-input"
+      class="search-input"
+      placeholder="Type to search..."
+    />
+    <ul id="breed-list" class="breed-list"></ul>
     <p class="loader">Loading data, please wait...</p>
     <p class="error">Oops! Something went wrong! Try reloading the page!</p>
     <div class="cat-info"></div>
 
-    <script src="./cat-api.js" type="module"></script>
-    <script src="./index.js" type="module"></script>
+    <script src="cat-api.js" type="module"></script>
+    <script src="index.js" type="module"></script>
   </body>
 </html>

@@ -19,15 +19,39 @@ label {
   display: block;
 }
 
-.breed-select {
+.search-input {
   width: 100%;
   max-width: 300px;
   padding: 10px;
   font-size: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.breed-list {
+  display: none;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 30vh; /* Set max height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+}
+
+.breed-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.breed-list li:hover {
+  background-color: #f0f0f0;
 }
 
 .loader,
@@ -44,7 +68,7 @@ label {
 .cat-info {
   width: 100%;
   max-width: 600px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
