@@ -33,7 +33,7 @@ body {
 
 .choices {
   width: 30vw;
-  height: 2vh;
+  height: 4vh;
   border: 1px solid #000000;
 }
 
@@ -42,15 +42,14 @@ div .choices__inner {
 }
 
 .search-bar-container {
-  width: 40vw;
-  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 #breed-search {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
