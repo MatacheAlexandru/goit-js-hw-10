@@ -98,7 +98,7 @@ async function loadBreedImages(breeds) {
     } catch (error) {
       console.error(`Error fetching image for breed ${breed.id}:`, error);
     }
-    await delay(500);
+    await delay(0);
   }
 }
 
